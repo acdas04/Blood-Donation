@@ -1,0 +1,26 @@
+<!-- frontend/pages/donations.html -->
+<div class="donations-container">
+    <h2>My Donations</h2>
+    <div class="donations-header">
+        <button id="addDonationBtn" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Add Donation
+        </button>
+    </div>
+    <div id="donationsList" class="donations-list">
+        <div class="donations-loading">Loading...</div>
+    </div>
+</div>
+
+<div id="addDonationModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Record New Donation</h3>
+        <form id="addDonationForm">
+            <div class="form-group">
+                <label for="donationDate">Donation Date</label>
+                <input type="date" id="donationDate" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Donation</button>
+        </form>
+    </div>
+</div>

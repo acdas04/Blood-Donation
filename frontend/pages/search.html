@@ -1,0 +1,24 @@
+<!-- frontend/pages/search.html -->
+<div class="search-container">
+    <h2>Search Blood Donors</h2>
+    <div class="search-form">
+        <div class="form-group">
+            <select id="searchBloodGroup">
+                <option value="">All Blood Groups</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="text" id="searchLocation" placeholder="Enter location">
+        </div>
+        <button id="searchBtn" class="btn btn-primary">Search</button>
+    </div>
+    <div id="searchResults" class="results-grid"></div>
+</div>
