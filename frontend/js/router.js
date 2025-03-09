@@ -45,6 +45,13 @@ class Router {
             return;
         }
 
+        // Special handling for register page - force a full page load
+        if (path === '/register' && !sessionStorage.getItem('register_page_loaded')) {
+            sessionStorage.setItem('register_page_loaded', 'true');
+            window.location.href = '/register';
+            return;
+        }
+
         try {
             const response = await fetch(route.template);
             const html = await response.text();
@@ -62,6 +69,12 @@ class Router {
                 this.routes[path].init();
             }
 
+            // Special post-loading initialization for register page
+            if (path === '/register' && typeof app !== 'undefined' && app.initRegisterPage) {
+                console.log('Router is manually initializing register page');
+                app.initRegisterPage();
+            }
+
         } catch (error) {
             console.error('Error loading page:', error);
             utils.showNotification('Error loading page', 'error');
@@ -69,6 +82,13 @@ class Router {
     }
 
     navigate(path) {
+        // Force a full page load for register
+        if (path === '/register') {
+            sessionStorage.removeItem('register_page_loaded');
+            window.location.href = path;
+            return;
+        }
+        
         window.history.pushState({}, '', path);
         this.handleRoute();
     }
